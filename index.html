@@ -16,12 +16,12 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         
-        /* Clase Glassmorphism */
+        /* Clase Glassmorphism adaptada al Verde Teal */
         .glass-panel {
-            background: rgba(30, 37, 50, 0.7);
+            background: rgba(0, 77, 64, 0.6); /* Base #004D40 con transparencia */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(164, 208, 55, 0.1); /* Borde sutil color Acento */
         }
         
         /* Animación brillo */
@@ -35,28 +35,30 @@
             theme: {
                 extend: {
                     colors: {
-                        background: '#0a0f1d',
-                        surface: '#1e2532',
-                        primary: '#2563eb',
+                        background: '#004D40',     // Fondo Principal
+                        surface: '#00382e',        // Un tono más oscuro para contraste
+                        primary: '#A4D037',        // Acento (Lima)
+                        darktext: '#212121',       // Texto oscuro / Color terciario
+                        light: '#FFFFFF',          // Texto claro
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-background text-slate-200 overflow-x-hidden">
+<body class="bg-background text-light overflow-x-hidden">
 
     <nav class="fixed w-full z-50 glass-panel border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
-                        <i data-lucide="rocket" class="text-white w-5 h-5"></i>
+                    <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+                        <i data-lucide="rocket" class="text-darktext w-5 h-5"></i>
                     </div>
-                    <span class="font-bold text-xl tracking-tight text-white">Buen Punto <span class="text-blue-500">Club</span></span>
+                    <span class="font-bold text-xl tracking-tight text-white">Buen Punto <span class="text-primary">Club</span></span>
                 </div>
                 <div class="hidden md:block">
-                    <a href="#solicitar" class="bg-white/10 hover:bg-white/20 text-white px-6 py-2 rounded-full font-medium transition-all text-sm border border-white/10">
+                    <a href="#solicitar" class="bg-white/5 hover:bg-white/10 text-white px-6 py-2 rounded-full font-medium transition-all text-sm border border-white/10 hover:border-primary/50">
                         Acceso Socios
                     </a>
                 </div>
@@ -66,30 +68,34 @@
 
     <section class="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
         
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+
         <div class="max-w-5xl mx-auto px-4 text-center z-10 relative" data-aos="fade-up">
             
-            <div class="inline-block mb-8 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+            <div class="inline-block mb-8 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider backdrop-blur-md">
                 Solo con invitación
             </div>
 
             <div class="mb-12 relative max-w-2xl mx-auto group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                <div class="absolute -inset-1 bg-gradient-to-r from-primary to-emerald-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-video">
                     <img src="https://raw.githubusercontent.com/oscarsvq/assets/refs/heads/main/Gemini_Generated_Image_uku8tsuku8tsuku8.png" 
                          alt="Atmósfera Buen Punto Club" 
-                         class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700">
+                         class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700 brightness-90">
+                    <div class="absolute inset-0 bg-background/30 mix-blend-color"></div>
                 </div>
             </div>
 
             <div class="mb-4">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 font-black text-xl md:text-3xl tracking-[0.2em] uppercase drop-shadow-sm">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-white font-black text-xl md:text-3xl tracking-[0.2em] uppercase drop-shadow-sm">
                     Business & Padel
                 </span>
             </div>
             
             <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight drop-shadow-2xl uppercase">
                 Una manera única<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">de hacer networking.</span>
+                <span class="text-primary">de hacer networking.</span>
             </h1>
             
             <p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
@@ -97,47 +103,47 @@
             </p>
             
             <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
-                <a href="#solicitar" class="group relative px-8 py-4 bg-blue-600 rounded-xl font-bold text-white shadow-xl shadow-blue-600/30 hover:bg-blue-500 transition-all transform hover:scale-105 overflow-hidden">
-                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                <a href="#solicitar" class="group relative px-8 py-4 bg-primary rounded-xl font-bold text-darktext shadow-xl shadow-primary/20 hover:bg-white transition-all transform hover:scale-105 overflow-hidden">
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
                     Solicitar Invitación
-                    <i data-lucide="chevron-right" class="inline w-5 h-5 ml-1"></i>
+                    <i data-lucide="chevron-right" class="inline w-5 h-5 ml-1 text-darktext"></i>
                 </a>
                 <p class="text-sm text-slate-400 mt-4 md:mt-0 md:ml-4 flex items-center shadow-black drop-shadow-md">
-                    <i data-lucide="lock" class="inline w-3 h-3 mr-1"></i> Plazas limitadas en aforo
+                    <i data-lucide="lock" class="inline w-3 h-3 mr-1 text-primary"></i> Plazas limitadas en aforo
                 </p>
             </div>
 
             <div class="flex flex-col items-center animate-fade-in-up">
                 <div class="flex items-center -space-x-4 mb-3">
-                    <img class="w-12 h-12 rounded-full border-2 border-[#0a0f1d] object-cover" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&h=100" alt="Miembro">
-                    <img class="w-12 h-12 rounded-full border-2 border-[#0a0f1d] object-cover" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&h=100" alt="Miembro">
-                    <img class="w-12 h-12 rounded-full border-2 border-[#0a0f1d] object-cover" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100" alt="Miembro">
-                    <img class="w-12 h-12 rounded-full border-2 border-[#0a0f1d] object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100" alt="Miembro">
-                    <div class="w-12 h-12 rounded-full border-2 border-[#0a0f1d] bg-surface flex items-center justify-center text-xs text-white font-bold">
+                    <img class="w-12 h-12 rounded-full border-2 border-background object-cover grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&h=100" alt="Miembro">
+                    <img class="w-12 h-12 rounded-full border-2 border-background object-cover grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&h=100" alt="Miembro">
+                    <img class="w-12 h-12 rounded-full border-2 border-background object-cover grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100" alt="Miembro">
+                    <img class="w-12 h-12 rounded-full border-2 border-background object-cover grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100" alt="Miembro">
+                    <div class="w-12 h-12 rounded-full border-2 border-background bg-surface flex items-center justify-center text-xs text-white font-bold">
                         +42
                     </div>
                 </div>
-                <p class="text-slate-400 text-sm font-medium">Únete a otros empresarios como tú</p>
+                <p class="text-primary/80 text-sm font-medium">Únete a otros empresarios como tú</p>
             </div>
 
         </div>
     </section>
 
-    <section class="py-24 bg-surface/30 relative border-t border-white/5">
+    <section class="py-24 bg-black/20 relative border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl font-bold text-white mb-6">El Networking tradicional <span class="text-red-500 line-through decoration-4 decoration-red-500/50">está roto</span></h2>
+                    <h2 class="text-3xl font-bold text-white mb-6">El Networking tradicional <span class="text-primary/60 line-through decoration-4 decoration-primary/50">está roto</span></h2>
                     <div class="space-y-6">
                         <div class="flex gap-4 group">
-                            <div class="p-3 rounded-lg bg-red-500/10 h-fit group-hover:bg-red-500/20 transition-colors"><i data-lucide="frown" class="text-red-400 w-6 h-6"></i></div>
+                            <div class="p-3 rounded-lg bg-white/5 h-fit group-hover:bg-white/10 transition-colors"><i data-lucide="frown" class="text-slate-400 w-6 h-6"></i></div>
                             <div>
                                 <h3 class="text-white font-bold mb-1">Eventos Fríos</h3>
                                 <p class="text-slate-400 text-sm">Intercambiar tarjetas sin alma no genera negocio real.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 group">
-                            <div class="p-3 rounded-lg bg-red-500/10 h-fit group-hover:bg-red-500/20 transition-colors"><i data-lucide="message-square-off" class="text-red-400 w-6 h-6"></i></div>
+                            <div class="p-3 rounded-lg bg-white/5 h-fit group-hover:bg-white/10 transition-colors"><i data-lucide="message-square-off" class="text-slate-400 w-6 h-6"></i></div>
                             <div>
                                 <h3 class="text-white font-bold mb-1">Conversaciones Vacías</h3>
                                 <p class="text-slate-400 text-sm">Charlas superficiales sin una solución real para lo que te importa.</p>
@@ -147,20 +153,20 @@
                 </div>
 
                 <div class="glass-panel p-8 rounded-3xl relative overflow-hidden shadow-2xl" data-aos="fade-left">
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
                     <h2 class="text-3xl font-bold text-white mb-4 relative z-10">Nuestra Filosofía</h2>
                     <p class="text-lg text-slate-300 mb-6 relative z-10">
-                        Generamos valor, no solo acumular peticiones de amistad en Linkedin. Buscamos <span class="text-blue-400 font-bold bg-blue-500/10 px-2 py-0.5 rounded">"Takeaways" accionables</span> que puedas implementar en tu empresa el lunes por la mañana.
+                        Generamos valor, no solo acumular peticiones de amistad en Linkedin. Buscamos <span class="text-darktext font-bold bg-primary px-2 py-0.5 rounded">"Takeaways" accionables</span> que puedas implementar en tu empresa el lunes por la mañana.
                     </p>
                     <ul class="space-y-4 relative z-10">
                         <li class="flex items-center gap-3 text-slate-300">
-                            <i data-lucide="check-circle-2" class="text-green-400 w-5 h-5 flex-shrink-0"></i> Resolución de problemas reales por otros que ya pasaron por ahí.
+                            <i data-lucide="check-circle-2" class="text-primary w-5 h-5 flex-shrink-0"></i> Resolución de problemas reales por otros que ya pasaron por ahí.
                         </li>
                         <li class="flex items-center gap-3 text-slate-300">
-                            <i data-lucide="check-circle-2" class="text-green-400 w-5 h-5 flex-shrink-0"></i> Sesiones intensas y dinámicas en las que darle una vuelta a tu negocio.
+                            <i data-lucide="check-circle-2" class="text-primary w-5 h-5 flex-shrink-0"></i> Sesiones intensas y dinámicas en las que darle una vuelta a tu negocio.
                         </li>
                         <li class="flex items-center gap-3 text-slate-300">
-                            <i data-lucide="check-circle-2" class="text-green-400 w-5 h-5 flex-shrink-0"></i> Generar nuevos contactos empresariales en un ambiente selecto y filtrado.
+                            <i data-lucide="check-circle-2" class="text-primary w-5 h-5 flex-shrink-0"></i> Generar nuevos contactos empresariales en un ambiente selecto y filtrado.
                         </li>
                     </ul>
                 </div>
@@ -168,47 +174,47 @@
         </div>
     </section>
 
-    <section class="py-24 relative overflow-hidden bg-[#0a0f1d]">
-        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-500/20 to-transparent hidden md:block"></div>
+    <section class="py-24 relative overflow-hidden bg-surface">
+        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden md:block"></div>
 
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-blue-400 font-bold tracking-widest text-sm uppercase">La Dinámica</span>
+                <span class="text-primary font-bold tracking-widest text-sm uppercase">La Dinámica</span>
                 <h2 class="text-4xl md:text-5xl font-black text-white mt-2">Un Viernes al mes.<br>4 Horas de Impacto.</h2>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 mb-20 items-center">
                 <div class="md:text-right" data-aos="fade-right">
-                    <div class="inline-flex items-center gap-2 mb-2 text-amber-400 font-bold">
-                        <span class="text-4xl opacity-20 font-black">01</span> ESTRATEGIA
+                    <div class="inline-flex items-center gap-2 mb-2 text-white font-bold">
+                        <span class="text-4xl opacity-20 font-black text-primary">01</span> ESTRATEGIA
                     </div>
-                    <h3 class="text-3xl font-bold text-white mb-4">Business Core</h3>
+                    <h3 class="text-3xl font-bold text-primary mb-4">Business Core</h3>
                     <p class="text-slate-400 mb-4 leading-relaxed">
                         Cero charlas pasivas. Utilizamos metodologías como <strong>Masterminds Express</strong> y <strong>Hot Seats</strong>. Ponemos un problema real sobre la mesa y aplicamos la inteligencia del grupo para resolverlo.
                     </p>
                 </div>
                 <div class="relative group" data-aos="fade-left">
-                    <div class="glass-panel p-6 rounded-2xl border-l-4 border-amber-400 transform group-hover:scale-105 transition-all shadow-lg hover:shadow-amber-500/10">
-                        <i data-lucide="brain-circuit" class="w-12 h-12 text-amber-400 mb-4"></i>
+                    <div class="glass-panel p-6 rounded-2xl border-l-4 border-primary transform group-hover:scale-105 transition-all shadow-lg hover:shadow-primary/10">
+                        <i data-lucide="brain-circuit" class="w-12 h-12 text-primary mb-4"></i>
                         <h4 class="text-white font-bold text-xl">Factor Sorpresa</h4>
-                        <p class="text-sm text-slate-500 mt-2">Cada mes un reto nuevo, una dinámica distinta o un referente que viene a dar un salto de calidad al debate o a contar su experiencia.</p>
+                        <p class="text-sm text-slate-400 mt-2">Cada mes un reto nuevo, una dinámica distinta o un referente que viene a dar un salto de calidad al debate o a contar su experiencia.</p>
                     </div>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 mb-20 items-center">
                 <div class="order-2 md:order-1 relative group" data-aos="fade-right">
-                    <div class="glass-panel p-6 rounded-2xl border-r-4 border-blue-500 transform group-hover:scale-105 transition-all text-right md:text-left shadow-lg hover:shadow-blue-500/10">
-                        <i data-lucide="trophy" class="w-12 h-12 text-blue-500 mb-4 ml-auto md:ml-0"></i>
+                    <div class="glass-panel p-6 rounded-2xl border-r-4 border-white transform group-hover:scale-105 transition-all text-right md:text-left shadow-lg hover:shadow-white/10">
+                        <i data-lucide="trophy" class="w-12 h-12 text-white mb-4 ml-auto md:ml-0"></i>
                         <h4 class="text-white font-bold text-xl">Torneo Americano</h4>
-                        <p class="text-sm text-slate-500 mt-2">Partidos de pádel de nivel equilibrado y buscando la rotación y nuevas parejas.</p>
+                        <p class="text-sm text-slate-400 mt-2">Partidos de pádel de nivel equilibrado y buscando la rotación y nuevas parejas.</p>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 md:text-left" data-aos="fade-left">
-                    <div class="inline-flex items-center gap-2 mb-2 text-blue-500 font-bold">
-                        DEPORTE <span class="text-4xl opacity-20 font-black">02</span> 
+                    <div class="inline-flex items-center gap-2 mb-2 text-white font-bold">
+                        DEPORTE <span class="text-4xl opacity-20 font-black text-primary">02</span> 
                     </div>
-                    <h3 class="text-3xl font-bold text-white mb-4">Pádel Core</h3>
+                    <h3 class="text-3xl font-bold text-primary mb-4">Pádel Core</h3>
                     <p class="text-slate-400 mb-4 leading-relaxed">
                         El deporte elimina jerarquías. En la pista descubres la verdadera esencia de tus contactos: competitividad, estrategia y trabajo en equipo.
                     </p>
@@ -217,35 +223,35 @@
 
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="md:text-right" data-aos="fade-right">
-                    <div class="inline-flex items-center gap-2 mb-2 text-green-400 font-bold">
-                        <span class="text-4xl opacity-20 font-black">03</span> SOCIAL
+                    <div class="inline-flex items-center gap-2 mb-2 text-white font-bold">
+                        <span class="text-4xl opacity-20 font-black text-primary">03</span> SOCIAL
                     </div>
-                    <h3 class="text-3xl font-bold text-white mb-4">Tiebreak</h3>
+                    <h3 class="text-3xl font-bold text-primary mb-4">Tiebreak</h3>
                     <p class="text-slate-400 mb-4 leading-relaxed">
                         Gastronomía premium y ambiente distendido. Después de competir mano a mano, las barreras bajan y las relaciones se vuelven más orgánicas y reales.
                     </p>
                 </div>
                 <div class="relative group" data-aos="fade-left">
-                    <div class="glass-panel p-6 rounded-2xl border-l-4 border-green-400 transform group-hover:scale-105 transition-all shadow-lg hover:shadow-green-500/10">
-                        <i data-lucide="martini" class="w-12 h-12 text-green-400 mb-4"></i>
+                    <div class="glass-panel p-6 rounded-2xl border-l-4 border-primary transform group-hover:scale-105 transition-all shadow-lg hover:shadow-primary/10">
+                        <i data-lucide="martini" class="w-12 h-12 text-primary mb-4"></i>
                         <h4 class="text-white font-bold text-xl">Gastronomía & Relax</h4>
-                        <p class="text-sm text-slate-500 mt-2">Cóctel y tapas de calidad mejor que intercambiarse una tarjeta. La recompensa merecida.</p>
+                        <p class="text-sm text-slate-400 mt-2">Cóctel y tapas de calidad mejor que intercambiarse una tarjeta. La recompensa merecida.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-[#050810] border-t border-white/5">
+    <section class="py-24 bg-background border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 text-center">
             
-            <div class="inline-block p-2 px-4 rounded-full bg-surface border border-white/10 mb-8">
-                <span class="text-blue-400 font-bold text-xs uppercase tracking-wider">El lugar de encuentro</span>
+            <div class="inline-block p-2 px-4 rounded-full bg-white/5 border border-white/10 mb-8">
+                <span class="text-primary font-bold text-xs uppercase tracking-wider">El lugar de encuentro</span>
             </div>
 
             <div class="mb-16 relative max-w-4xl mx-auto flex justify-center" data-aos="fade-up">
                 
-                <div class="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full opacity-50 pointer-events-none"></div>
+                <div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full opacity-50 pointer-events-none"></div>
 
                 <img src="https://raw.githubusercontent.com/oscarsvq/assets/refs/heads/main/Dise%C3%B1o%20sin%20t%C3%ADtulo%20(11).png" 
                      alt="App Mockup Transparente" 
@@ -255,25 +261,25 @@
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">El Club</h2>
             
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="p-8 rounded-3xl bg-surface/50 border border-white/5 hover:border-blue-500/30 hover:bg-surface transition-all group" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="bar-chart-2" class="text-blue-400 w-8 h-8"></i>
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-primary/50 hover:bg-white/10 transition-all group" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bar-chart-2" class="text-darktext w-8 h-8"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Ranking en Vivo</h3>
                     <p class="text-slate-400 text-sm">Estadísticas, eficiencia y posición en la liga de padel actualizadas en tiempo real. Pique sano.</p>
                 </div>
 
-                <div class="p-8 rounded-3xl bg-surface/50 border border-white/5 hover:border-blue-500/30 hover:bg-surface transition-all group" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="users" class="text-blue-400 w-8 h-8"></i>
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-primary/50 hover:bg-white/10 transition-all group" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="users" class="text-darktext w-8 h-8"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Directorio Premium</h3>
                     <p class="text-slate-400 text-sm">Acceso a perfiles completos con métricas de negocio para encontrar sinergias antes de veros la cara en el evento.</p>
                 </div>
 
-                <div class="p-8 rounded-3xl bg-surface/50 border border-white/5 hover:border-blue-500/30 hover:bg-surface transition-all group" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="calendar-check" class="text-blue-400 w-8 h-8"></i>
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-primary/50 hover:bg-white/10 transition-all group" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="calendar-check" class="text-darktext w-8 h-8"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Todo en un mismo lugar</h3>
                     <p class="text-slate-400 text-sm">Agenda de contactos, confirmaciones de asistencia a eventos y resúmenes de sesiones Mastermind y fotos de cada evento en tu bolsillo.</p>
@@ -283,27 +289,28 @@
     </section>
 
     <section id="solicitar" class="py-32 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-background z-0"></div>
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center glass-panel p-8 md:p-12 rounded-[40px] border border-blue-500/20 shadow-2xl shadow-blue-900/10" data-aos="zoom-in-up">
-            <div class="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-amber-500/20 transform -rotate-3 hover:rotate-0 transition-transform">
-                <i data-lucide="key" class="text-white w-10 h-10"></i>
+        <div class="absolute inset-0 bg-gradient-to-b from-surface to-background z-0"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center glass-panel p-8 md:p-12 rounded-[40px] border border-primary/20 shadow-2xl shadow-primary/5" data-aos="zoom-in-up">
+            <div class="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-primary/20 transform -rotate-3 hover:rotate-0 transition-transform">
+                <i data-lucide="key" class="text-darktext w-10 h-10"></i>
             </div>
             <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Acceso Restringido</h2>
             <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-                La calidad del club reside en la calidad de sus miembros. El acceso es únicamente por <span class="text-amber-400 font-bold">invitación directa o recomendación</span>.
+                La calidad del club reside en la calidad de sus miembros. El acceso es únicamente por <span class="text-primary font-bold">invitación directa o recomendación</span>.
             </p>
-            <div class="bg-surface/80 backdrop-blur-md p-8 rounded-2xl max-w-lg mx-auto border border-white/10 text-left shadow-2xl">
+            <div class="bg-background/80 backdrop-blur-md p-8 rounded-2xl max-w-lg mx-auto border border-white/10 text-left shadow-2xl">
                 <h3 class="text-white font-bold mb-4 flex items-center gap-2">
-                    <i data-lucide="send" class="text-blue-400 w-4 h-4"></i> Solicitar ingreso en lista de espera
+                    <i data-lucide="send" class="text-primary w-4 h-4"></i> Solicitar ingreso en lista de espera
                 </h3>
                 <form class="space-y-4" onsubmit="event.preventDefault(); alert('Solicitud recibida. Analizaremos tu perfil.');">
                     <div>
-                        <input type="email" placeholder="Email Profesional" class="w-full bg-[#0a0f1d] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-blue-500 transition-colors" required>
+                        <input type="email" placeholder="Email Profesional" class="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-primary transition-colors" required>
                     </div>
                     <div>
-                        <input type="text" placeholder="LinkedIn URL" class="w-full bg-[#0a0f1d] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-blue-500 transition-colors" required>
+                        <input type="text" placeholder="LinkedIn URL" class="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-primary transition-colors" required>
                     </div>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full bg-primary hover:bg-white text-darktext font-bold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2">
                         Aplicar para Membresía <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                     <p class="text-xs text-center text-slate-500 mt-3">
@@ -314,15 +321,15 @@
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/5 text-center bg-[#050810]">
+    <footer class="py-12 border-t border-white/5 text-center bg-[#212121]">
         <div class="flex items-center justify-center gap-2 mb-4 opacity-50">
             <i data-lucide="rocket" class="w-4 h-4 text-white"></i>
             <span class="font-bold text-white">Buen Punto Club</span>
         </div>
-        <p class="text-slate-600 text-sm">© 2026 Buen Punto Club. Todos los derechos reservados.</p>
+        <p class="text-slate-500 text-sm">© 2026 Buen Punto Club. Todos los derechos reservados.</p>
         <div class="flex justify-center gap-6 mt-6">
-            <a href="#" class="text-slate-600 hover:text-blue-400 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-            <a href="#" class="text-slate-600 hover:text-pink-400 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+            <a href="#" class="text-slate-500 hover:text-primary transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            <a href="#" class="text-slate-500 hover:text-primary transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
         </div>
     </footer>
 
