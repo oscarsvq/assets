@@ -13,6 +13,13 @@
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("ku-vvS6wQX6843BPH");
+       })();
+    </script>
+
     <style>
         body { font-family: 'Inter', sans-serif; }
         
@@ -303,20 +310,23 @@
                 <h3 class="text-white font-bold mb-4 flex items-center gap-2">
                     <i data-lucide="send" class="text-primary w-4 h-4"></i> Solicitar ingreso en lista de espera
                 </h3>
-                <form class="space-y-4" onsubmit="event.preventDefault(); alert('Solicitud recibida. Analizaremos tu perfil.');">
+                
+                <form id="contact-form" class="space-y-4">
                     <div>
-                        <input type="email" placeholder="Email Profesional" class="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-primary transition-colors" required>
+                        <input type="email" name="email" placeholder="Email Profesional" class="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-primary transition-colors" required>
                     </div>
                     <div>
-                        <input type="text" placeholder="LinkedIn URL" class="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-primary transition-colors" required>
+                        <input type="text" name="linkedin" placeholder="LinkedIn URL" class="w-full bg-surface border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-primary transition-colors" required>
                     </div>
-                    <button type="submit" class="w-full bg-primary hover:bg-white text-darktext font-bold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2">
-                        Aplicar para Membresía <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <button id="btn-submit" type="submit" class="w-full bg-primary hover:bg-white text-darktext font-bold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                        <span id="btn-text">Aplicar para Membresía</span> 
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                     <p class="text-xs text-center text-slate-500 mt-3">
                         Revisamos cada perfil manualmente. Buscamos generadores de valor.
                     </p>
                 </form>
+
             </div>
         </div>
     </section>
@@ -337,6 +347,50 @@
     <script>
         lucide.createIcons();
         AOS.init({ duration: 800, once: true, offset: 50 });
+
+        // 3. LOGICA DE ENVIO CON EMAILJS (ADAPTADA A LOS NUEVOS COLORES)
+        const btn = document.getElementById('btn-submit');
+        const btnText = document.getElementById('btn-text');
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Cambiar estado del botón
+            btnText.textContent = 'Enviando solicitud...';
+            btn.disabled = true;
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+
+            const serviceID = 'service_qmfwqvx';
+            const templateID = 'template_erii2lt';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    // ÉXITO
+                    btnText.textContent = '¡Solicitud Enviada!';
+                    btn.classList.remove('bg-primary', 'text-darktext'); // Quitamos color original
+                    btn.classList.add('bg-emerald-500', 'text-white'); // Ponemos verde éxito
+                    
+                    alert('¡Gracias! Hemos recibido tu solicitud. Analizaremos tu perfil y te contactaremos.');
+                    
+                    // Resetear formulario
+                    document.getElementById('contact-form').reset();
+                    
+                    // Restaurar botón después de 3 segundos
+                    setTimeout(() => {
+                        btnText.textContent = 'Aplicar para Membresía';
+                        btn.disabled = false;
+                        btn.classList.remove('opacity-70', 'cursor-not-allowed', 'bg-emerald-500', 'text-white');
+                        btn.classList.add('bg-primary', 'text-darktext'); // Volvemos al Lima original
+                    }, 3000);
+                }, (err) => {
+                    // ERROR
+                    btnText.textContent = 'Aplicar para Membresía';
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                    
+                    alert('Ocurrió un error al enviar. Por favor, inténtalo más tarde. Error: ' + JSON.stringify(err));
+                });
+        });
     </script>
 </body>
 </html>
