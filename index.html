@@ -55,7 +55,7 @@
 </head>
 <body class="bg-background text-light overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 glass-panel border-b border-white/5 transition-all duration-300">
+    <nav class="hidden md:block fixed w-full z-50 glass-panel border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-2">
@@ -64,7 +64,7 @@
                     </div>
                     <span class="font-bold text-xl tracking-tight text-white">Buen Punto <span class="text-primary">Club</span></span>
                 </div>
-                <div class="hidden md:block">
+                <div>
                     <a href="#solicitar" class="bg-white/5 hover:bg-white/10 text-white px-6 py-2 rounded-full font-medium transition-all text-sm border border-white/10 hover:border-primary/50">
                         Acceso Socios
                     </a>
@@ -73,18 +73,26 @@
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center pt-8 md:pt-32 pb-20 overflow-hidden">
         
         <div class="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-5xl mx-auto px-4 text-center z-10 relative" data-aos="fade-up">
             
-            <div class="inline-block mb-8 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-                Solo con invitación
+            <div class="mb-8 flex justify-center">
+                
+                <div class="hidden md:inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+                    Solo con invitación
+                </div>
+
+                <a href="#solicitar" class="inline-block md:hidden px-6 py-2 rounded-full border border-primary/60 text-primary font-bold text-sm bg-surface/40 backdrop-blur-md hover:bg-primary hover:text-darktext transition-all shadow-lg shadow-black/20">
+                    Acceso a El Club
+                </a>
+
             </div>
 
-            <div class="mb-12 relative max-w-2xl mx-auto group">
+            <div class="mb-8 md:mb-12 relative max-w-2xl mx-auto group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-primary to-emerald-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-video">
                     <img src="https://raw.githubusercontent.com/oscarsvq/assets/refs/heads/main/Gemini_Generated_Image_uku8tsuku8tsuku8.png" 
@@ -92,6 +100,12 @@
                          class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700 brightness-90">
                     <div class="absolute inset-0 bg-background/30 mix-blend-color"></div>
                 </div>
+            </div>
+
+            <div class="md:hidden mb-2 animate-fade-in-up">
+                <span class="block font-black text-3xl tracking-tight text-white uppercase drop-shadow-lg leading-none">
+                    Buen Punto <span class="text-primary">Club</span>
+                </span>
             </div>
 
             <div class="mb-4">
@@ -348,14 +362,13 @@
         lucide.createIcons();
         AOS.init({ duration: 800, once: true, offset: 50 });
 
-        // 3. LOGICA DE ENVIO CON EMAILJS (ADAPTADA A LOS NUEVOS COLORES)
+        // LOGICA DE ENVIO CON EMAILJS
         const btn = document.getElementById('btn-submit');
         const btnText = document.getElementById('btn-text');
 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Cambiar estado del botón
             btnText.textContent = 'Enviando solicitud...';
             btn.disabled = true;
             btn.classList.add('opacity-70', 'cursor-not-allowed');
@@ -365,30 +378,26 @@
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
-                    // ÉXITO
                     btnText.textContent = '¡Solicitud Enviada!';
-                    btn.classList.remove('bg-primary', 'text-darktext'); // Quitamos color original
-                    btn.classList.add('bg-emerald-500', 'text-white'); // Ponemos verde éxito
+                    btn.classList.remove('bg-primary', 'text-darktext');
+                    btn.classList.add('bg-emerald-500', 'text-white');
                     
                     alert('¡Gracias! Hemos recibido tu solicitud. Analizaremos tu perfil y te contactaremos.');
                     
-                    // Resetear formulario
                     document.getElementById('contact-form').reset();
                     
-                    // Restaurar botón después de 3 segundos
                     setTimeout(() => {
                         btnText.textContent = 'Aplicar para Membresía';
                         btn.disabled = false;
                         btn.classList.remove('opacity-70', 'cursor-not-allowed', 'bg-emerald-500', 'text-white');
-                        btn.classList.add('bg-primary', 'text-darktext'); // Volvemos al Lima original
+                        btn.classList.add('bg-primary', 'text-darktext');
                     }, 3000);
                 }, (err) => {
-                    // ERROR
                     btnText.textContent = 'Aplicar para Membresía';
                     btn.disabled = false;
                     btn.classList.remove('opacity-70', 'cursor-not-allowed');
                     
-                    alert('Ocurrió un error al enviar. Por favor, inténtalo más tarde. Error: ' + JSON.stringify(err));
+                    alert('Ocurrió un error al enviar. Por favor, inténtalo más tarde.');
                 });
         });
     </script>
